@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>eCFR Analyzer</title>
+    <!-- Include Chart.js from CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  </head>
+  <body>
+    <h1>eCFR Analyzer</h1>
+
+    <!-- Single Snapshot (Regular) -->
+    <h2>Single Snapshot Analysis (By Date)</h2>
+    <label>Date (YYYY-MM-DD): 
+      <input type="text" id="analyzeDate" value="2025-01-01" />
+    </label>
+    <label>Title #:
+      <input type="text" id="analyzeTitle" value="1" />
+    </label>
+    <button onclick="triggerAnalysis()">Analyze eCFR</button>
+    <button onclick="fetchResults()">Get Latest Results</button>
+    <div id="analysisOutput" style="white-space: pre-wrap; margin-top: 1rem;"></div>
+
+    <!-- NEW: Latest eCFR Snapshot -->
+    <hr/>
+    <h2>Current/Latest Snapshot Analysis</h2>
+    <label>Title #:
+      <input type="text" id="latestTitle" value="1" />
+    </label>
+    <button onclick="fetchLatestAnalysis()">Fetch Latest eCFR</button>
+    <div id="latestOutput" style="white-space: pre-wrap; margin-top: 1rem;"></div>
+
+    <!-- Compare Snapshots -->
+    <hr/>
+    <h2>Compare Two Snapshots (Historical Changes)</h2>
+    <label>Date 1:
+      <input type="text" id="compareDate1" value="2023-01-01" />
+    </label>
+    <label>Date 2:
+      <input type="text" id="compareDate2" value="2024-01-01" />
+    </label>
+    <label>Title #:
+      <input type="text" id="compareTitle" value="1" />
+    </label>
+    <button onclick="compareSnapshots()">Compare</button>
+    <div id="compareOutput" style="white-space: pre-wrap; margin-top: 1rem;"></div>
+
+    <!-- Visualize Agency References -->
+    <hr/>
+    <h2>Agency References Bar Chart</h2>
+    <canvas id="agencyChart" width="400" height="200"></canvas>
+
+    <!-- Show top words -->
+    <hr/>
+    <h2>Top Words</h2>
+    <ul id="topWordsList"></ul>
+
+    <!-- Scripts -->
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+  </body>
+</html>
